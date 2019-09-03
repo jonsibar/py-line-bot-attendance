@@ -38,7 +38,7 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-	text = event.message.text
+	text = event.message.text.lower()
 
 	if text == 'absen':
 		line_bot_api.reply_message(
