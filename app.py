@@ -51,6 +51,13 @@ def handle_message(event):
 			event.reply_token,
 			TextSendMessage(text=attendance2.attendance))
 
+	if text == 'login':
+			line_bot_api.reply_message(
+			event.reply_token,
+			TextSendMessage(text='masukkan id'))
+			await event.message
+			print(text + 'mantab')
+
 	else:
 		line_bot_api.reply_message(
 			event.reply_token,
