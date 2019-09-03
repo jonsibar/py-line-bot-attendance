@@ -62,7 +62,6 @@ for percent in soup:
 
 # In[ ]:
 attendance = dict(zip(subject_list, percent_list))
-print(attendance)
 
 
 
