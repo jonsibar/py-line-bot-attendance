@@ -57,6 +57,10 @@ def handle_message(event):
 			TextSendMessage(text='masukkan id'))
 			await event.message
 			print(text + 'mantab')
+			line_bot_api.reply_message(
+			event.reply_token,
+			TextSendMessage(text= text + 'mantab'))
+
 
 	else:
 		line_bot_api.reply_message(
