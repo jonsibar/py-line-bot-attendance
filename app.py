@@ -42,7 +42,7 @@ def handle_message(event):
     text = event.message.text
 
 
-    if text == 'absen':
+	if text == 'absen':
         line_bot_api.reply_message(
         event.reply_token,
         TextSendMessage(text=attendance.attendance))
