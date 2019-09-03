@@ -58,7 +58,7 @@ def handle_message(event):
 
 	if 'id:' in text:
 		text = text.split('id')
-		id = text[0].str
+		id = text[0]
 
 
 	else:
