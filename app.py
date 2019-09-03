@@ -54,14 +54,15 @@ def handle_message(event):
 	if text == 'login':
 		line_bot_api.reply_message(
 		event.reply_token,
-		TextSendMessage(text='masukkan id'))
+		TextSendMessage(text='Masukkan id dan password dengan format = id,password \nContoh : dajal18,123456 '))
 
-	if 'id:' in text:
-		text = text.split('id')
-		user = text[1]
-		line_bot_api.reply_message(
-		event.reply_token,
-		TextSendMessage(user))
+	if ','  in text:
+		user = text.split(',')[0]
+		pw = text.split(',')[1]
+		login_data = {
+		'username':user,
+		'password' :pw
+		}
 
 
 	else:
