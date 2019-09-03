@@ -11,6 +11,7 @@ from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage,
 )
 import attendance
+import attendance2
 
 app = Flask(__name__)
 
@@ -44,6 +45,12 @@ def handle_message(event):
 		line_bot_api.reply_message(
 			event.reply_token,
 			TextSendMessage(text=attendance.attendance))
+
+	if text == 'absen2':
+		line_bot_api.reply_message(
+			event.reply_token,
+			TextSendMessage(text=attendance2.attendance))
+
 	else:
 		line_bot_api.reply_message(
 			event.reply_token,
