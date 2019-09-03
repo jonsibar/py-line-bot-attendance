@@ -59,7 +59,7 @@ def handle_message(event):
 	if ','  in text:
 		user = text.split(',')[0]
 		pw = text.split(',')[1]
-		login_data = {
+		attendance.login_data = {
 		'username':user,
 		'password' :pw
 		}
