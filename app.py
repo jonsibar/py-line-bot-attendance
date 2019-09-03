@@ -61,8 +61,7 @@ def handle_message(event):
 		id = text[0]
 		ine_bot_api.reply_message(
 		event.reply_token,
-		TextSendMessage(id)
-
+		TextSendMessage(id))
 
 
 	else:
