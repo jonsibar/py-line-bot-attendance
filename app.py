@@ -55,11 +55,10 @@ def handle_message(event):
 		line_bot_api.reply_message(
 		event.reply_token,
 		TextSendMessage(text='masukkan id'))
-		await event.message
-		print(text + 'mantab')
-		line_bot_api.reply_message(
-		event.reply_token,
-		TextSendMessage(text= text + 'mantab'))
+
+	if 'id:' in text:
+		text = text.split('id')
+		id = text[0].str
 
 
 	else:
