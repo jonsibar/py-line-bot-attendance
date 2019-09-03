@@ -10,6 +10,7 @@ from linebot.exceptions import (
 from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage,
 )
+import attendance
 
 app = Flask(__name__)
 
@@ -40,7 +41,7 @@ def handle_message(event):
     """ Here's all the messages will be handled and processed by the program """
     line_bot_api.reply_message(
         event.reply_token,
-        TextSendMessage(text=event.message.text))
+        TextSendMessage(text=attendance.attendance))
 
 
 if __name__ == "__main__":
