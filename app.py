@@ -52,14 +52,14 @@ def handle_message(event):
 			TextSendMessage(text=attendance2.attendance))
 
 	if text == 'login':
-			line_bot_api.reply_message(
-			event.reply_token,
-			TextSendMessage(text='masukkan id'))
-			await event.message
-			print(text + 'mantab')
-			line_bot_api.reply_message(
-			event.reply_token,
-			TextSendMessage(text= text + 'mantab'))
+		line_bot_api.reply_message(
+		event.reply_token,
+		TextSendMessage(text='masukkan id'))
+		await event.message
+		print(text + 'mantab')
+		line_bot_api.reply_message(
+		event.reply_token,
+		TextSendMessage(text= text + 'mantab'))
 
 
 	else:
