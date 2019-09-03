@@ -43,11 +43,13 @@ def handle_message(event):
 
 
 	if text == 'absen':
-        line_bot_api.reply_message(
-        event.reply_token,
-        TextSendMessage(text=attendance.attendance))
+		line_bot_api.reply_message(
+			event.reply_token,
+			TextSendMessage(text=attendance.attendance))
     else:
-    	line_bot_api.reply_message(event.reply_token,TextSendMessage(text="ngomong ape lur"))
+    	line_bot_api.reply_message(
+    		event.reply_token,
+    		TextSendMessage(text="ngomong ape lur"))
 
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
