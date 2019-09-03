@@ -6,6 +6,7 @@
 
 import requests
 from bs4 import BeautifulSoup
+import json
 
 # In[41]:
 
@@ -61,6 +62,5 @@ for percent in soup:
 
 # In[ ]:
 attendance = dict(zip(subject_list, percent_list))
-
-
+attendance = json.dumps(attendance)
 
