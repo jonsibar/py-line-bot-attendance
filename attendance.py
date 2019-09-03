@@ -63,4 +63,7 @@ for percent in soup:
 # In[ ]:
 attendance = dict(zip(subject_list, percent_list))
 attendance = json.dumps(attendance)
-
+attendance = attendance.replace('{','')
+attendance = attendance.replace('}','')
+attendance = attendance.replace(',','\n')
+attendance = attendance.replace('"','')
