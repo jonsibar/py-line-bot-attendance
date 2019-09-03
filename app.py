@@ -59,6 +59,10 @@ def handle_message(event):
 	if 'id:' in text:
 		text = text.split('id')
 		id = text[0]
+		ine_bot_api.reply_message(
+		event.reply_token,
+		TextSendMessage(id)
+
 
 
 	else:
