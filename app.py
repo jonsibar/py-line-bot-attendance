@@ -74,13 +74,13 @@ def handle_message(event):
 	#profile = line_bot_api.get_profile(event.source.user_id)
 
 	if text == 'absen jono':
-		scraper.login_data.append(login.jono)
+		scraper.login_data = login.jono
 		line_bot_api.reply_message(
 			event.reply_token,
 			TextSendMessage(text=scraper.attendance)
 			)
 	elif text == 'elearning jono':
-		scraper.login_data.append(login.jono)
+		scraper.login_data = login.jono
 		line_bot_api.reply_message(
 			event.reply_token,
 			TextSendMessage(text=scraper.elearning_list)
@@ -90,13 +90,13 @@ def handle_message(event):
 
 
 	elif text == 'absen dedep':
-		scraper.login_data.append(login.devina)
+		scraper.login_data = login.devina
 		line_bot_api.reply_message(
 			event.reply_token,
 			TextSendMessage(text=scraper.attendance)
 			)
 	elif text == 'elearning devina':
-		scraper.login_data.append(login.devina)
+		scraper.login_data = login.devina
 		line_bot_api.reply_message(
 			event.reply_token,
 			TextSendMessage(text=scraper.elearning_list)
@@ -106,13 +106,13 @@ def handle_message(event):
 
 
 	elif text == 'absen hudiya':
-		scraper.login_data.append(login.hudiya)
+		scraper.login_data = login.hudiya
 		line_bot_api.reply_message(
 			event.reply_token,
 			TextSendMessage(text=scraper.attendance)
 			)
 	elif text == 'elearning hudiya':
-		scraper.login_data.append(login.hudiya)
+		scraper.login_data = login.hudiya
 		line_bot_api.reply_message(
 			event.reply_token,
 			TextSendMessage(text=scraper.elearning_list)
