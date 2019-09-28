@@ -77,6 +77,12 @@ def handle_message(event):
 			event.reply_token,
 			TextSendMessage(text=jono.attendance)
 			)
+	elif text == 'elearning jono':
+		line_bot_api.reply_message(
+			event.reply_token,
+			TextSendMessage(text=jono.elearning_list)
+			)
+
 
 
 
@@ -85,6 +91,12 @@ def handle_message(event):
 			event.reply_token,
 			TextSendMessage(text=devina.attendance)
 			)
+	elif text == 'elearning devina':
+		line_bot_api.reply_message(
+			event.reply_token,
+			TextSendMessage(text=devina.elearning_list)
+			)
+
 
 
 
