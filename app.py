@@ -40,11 +40,12 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
 	text = event.message.text.lower()
+	profile = line_bot_api.get_profile(event.source.user_id)
 
 	if text == 'absen':
 		line_bot_api.reply_message(
 			event.reply_token,
-			TextSendMessage(text=attendance.attendance))
+			TextSendMessage(text='Halo ' + profile.display_name '\n' + attendance.attendance))
 
 	if text == 'absen2':
 		line_bot_api.reply_message(
@@ -68,7 +69,7 @@ def handle_message(event):
 	else:
 		line_bot_api.reply_message(
 			event.reply_token,
-			TextSendMessage(text="ngomong ape lur"))
+			TextSendMessage(text="Perintah salah. Mohon dicek penulisan perintah terlebih dahulu."))
 
 
 
