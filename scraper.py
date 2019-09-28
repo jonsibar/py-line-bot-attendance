@@ -22,6 +22,8 @@ def scrape(login_data):
     }
     
     # In[3]:
+    global attendance
+    global elearning_list
     
     
     s = requests.session()
