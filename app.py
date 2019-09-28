@@ -76,13 +76,13 @@ def handle_message(event):
 		attendance(login.jono)
 		line_bot_api.reply_message(
 			event.reply_token,
-			TextSendMessage(text=scraper.attendance)
+			TextSendMessage(text=attendance)
 			)
 	elif text == 'elearning jono':
 		mats(login.jono)
 		line_bot_api.reply_message(
 			event.reply_token,
-			TextSendMessage(text=scraper.elearning_list)
+			TextSendMessage(text=elearning_list)
 			)
 
 
@@ -92,13 +92,13 @@ def handle_message(event):
 		attendance(login.devina)
 		line_bot_api.reply_message(
 			event.reply_token,
-			TextSendMessage(text=scraper.attendance)
+			TextSendMessage(text=attendance)
 			)
 	elif text == 'elearning devina':
 		mats(login.devina)
 		line_bot_api.reply_message(
 			event.reply_token,
-			TextSendMessage(text=scraper.elearning_list)
+			TextSendMessage(text=elearning_list)
 			)
 
 
@@ -108,13 +108,13 @@ def handle_message(event):
 		attendance(login.hudiya)
 		line_bot_api.reply_message(
 			event.reply_token,
-			TextSendMessage(text=scraper.attendance)
+			TextSendMessage(text=attendance)
 			)
 	elif text == 'elearning hudiya':
 		mats(login.hudiya)
 		line_bot_api.reply_message(
 			event.reply_token,
-			TextSendMessage(text=scraper.elearning_list)
+			TextSendMessage(text=elearning_list)
 			)
 
 
