@@ -89,7 +89,7 @@ elearning_list = []
 
 for course in courses:
     title = course.a['title']
-    elearning_list.append(title)
+    elearning_list.append(title+ ', , ') 
     url = course.a['href']
     r=s.get(url, headers = headers)
     soup = BeautifulSoup(r.content, 'lxml')
@@ -101,7 +101,9 @@ for course in courses:
             file_name = file_name.replace(' File','')
             elearning_list.append(file_name)
             elearning_list.append(file_url)
+    elearning_list.append(', ')
 
+    
 
 elearning_list = json.dumps(elearning_list)
 elearning_list = elearning_list.replace('[','')
