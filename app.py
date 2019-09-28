@@ -23,9 +23,10 @@ from linebot.models import (
     TextComponent, SpacerComponent, IconComponent, ButtonComponent,
     SeparatorComponent, QuickReply, QuickReplyButton,
     ImageSendMessage)
-import jono
-import devina
-import hudiya
+import scraper
+import login
+
+
 
 app = Flask(__name__)
 
@@ -73,42 +74,48 @@ def handle_message(event):
 	#profile = line_bot_api.get_profile(event.source.user_id)
 
 	if text == 'absen jono':
+		scraper.login_data.append(login.jono)
 		line_bot_api.reply_message(
 			event.reply_token,
-			TextSendMessage(text=jono.attendance)
+			TextSendMessage(text=scraper.attendance)
 			)
 	elif text == 'elearning jono':
+		scraper.login_data.append(login.jono)
 		line_bot_api.reply_message(
 			event.reply_token,
-			TextSendMessage(text=jono.elearning_list)
+			TextSendMessage(text=scraper.elearning_list)
 			)
 
 
 
 
 	elif text == 'absen dedep':
+		scraper.login_data.append(login.devina)
 		line_bot_api.reply_message(
 			event.reply_token,
-			TextSendMessage(text=devina.attendance)
+			TextSendMessage(text=scraper.attendance)
 			)
 	elif text == 'elearning devina':
+		scraper.login_data.append(login.devina)
 		line_bot_api.reply_message(
 			event.reply_token,
-			TextSendMessage(text=devina.elearning_list)
+			TextSendMessage(text=scraper.elearning_list)
 			)
 
 
 
 
 	elif text == 'absen hudiya':
+		scraper.login_data.append(login.hudiya)
 		line_bot_api.reply_message(
 			event.reply_token,
-			TextSendMessage(text=hudiya.attendance)
+			TextSendMessage(text=scraper.attendance)
 			)
 	elif text == 'elearning hudiya':
+		scraper.login_data.append(login.hudiya)
 		line_bot_api.reply_message(
 			event.reply_token,
-			TextSendMessage(text=hudiya.elearning_list)
+			TextSendMessage(text=scraper.elearning_list)
 			)
 
 
