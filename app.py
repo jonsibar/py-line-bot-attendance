@@ -5,11 +5,24 @@ from linebot import (
     LineBotApi, WebhookHandler
 )
 from linebot.exceptions import (
-    InvalidSignatureError
+    LineBotApiError, InvalidSignatureError
 )
 from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage,
-)
+    SourceUser, SourceGroup, SourceRoom,
+    TemplateSendMessage, ConfirmTemplate, MessageAction,
+    ButtonsTemplate, ImageCarouselTemplate, ImageCarouselColumn, URIAction,
+    PostbackAction, DatetimePickerAction,
+    CameraAction, CameraRollAction, LocationAction,
+    CarouselTemplate, CarouselColumn, PostbackEvent,
+    StickerMessage, StickerSendMessage, LocationMessage, LocationSendMessage,
+    ImageMessage, VideoMessage, AudioMessage, FileMessage,
+    UnfollowEvent, FollowEvent, JoinEvent, LeaveEvent, BeaconEvent,
+    MemberJoinedEvent, MemberLeftEvent,
+    FlexSendMessage, BubbleContainer, ImageComponent, BoxComponent,
+    TextComponent, SpacerComponent, IconComponent, ButtonComponent,
+    SeparatorComponent, QuickReply, QuickReplyButton,
+    ImageSendMessage)
 import attendance
 import attendance2
 
@@ -36,6 +49,23 @@ def callback():
 
     return 'OK'
 
+@handler.add(FollowEvent)
+def handle_follow(event):
+	profile = line_bot_api.get_profile(event.source.user_id)
+	line_bot_api.reply_message(
+			event.reply_token,
+			TextSendMessage(text='Silahkan coba aku kak ' + profile.display_name)
+			)
+
+@handler.add(JoinEvent)
+def handle_join(event):
+	profile = line_bot_api.get_group_member_profile(event.source.user_id)
+	line_bot_api.reply_message(
+			event.reply_token,
+			TextSendMessage(text='Silahkan coba aku kak ' + profile.display_name)
+			)
+
+
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
@@ -48,29 +78,28 @@ def handle_message(event):
 			TextSendMessage(text='Halo ' + profile.display_name + '\n' + attendance.attendance)
 			)
 
-	if text == 'absen2':
+	elif text == 'absen2':
 		line_bot_api.reply_message(
 			event.reply_token,
 			TextSendMessage(text=attendance2.attendance))
 
-	if text == 'login':
-		line_bot_api.reply_message(
-		event.reply_token,
-		TextSendMessage(text='Masukkan id dan password dengan format = id,password \nContoh : dajal18,123456 '))
-
-	if ','  in text:
-		user = text.split(',')[0]
-		pw = text.split(',')[1]
-		attendance.login_data = {
-		'username':user,
-		'password' :pw
-		}
+    elif text == 'buttons':
+        buttons_template = ButtonsTemplate(
+            title='My buttons sample', text='Hello, my buttons', actions=[
+                URIAction(label='Go to line.me', uri='https://line.me'),
+                PostbackAction(label='ping', data='ping'),
+                PostbackAction(label='ping with text', data='ping', text='ping'),
+                MessageAction(label='Translate Rice', text='米')
+            ])
+        template_message = TemplateSendMessage(
+            alt_text='Buttons alt text', template=buttons_template)
+        line_bot_api.reply_message(event.reply_token, template_message)
 
 
 	else:
 		line_bot_api.reply_message(
 			event.reply_token,
-			TextSendMessage(text="Perintah salah. Mohon dicek penulisan perintah terlebih dahulu."))
+			TextSendMessage(text="ngomong apa bro"))
 
 
 
