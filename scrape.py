@@ -119,12 +119,14 @@ def mats(login_data):
                 file_name = file_name.replace(' File','')
                 elearning_list.append(file_name)
                 elearning_list.append(file_url)
+        if course in range(len(courses)-1):
+            break
         elearning_list.append(',')
 
+
+        
     
 
     elearning_list = json.dumps(elearning_list)
-    elearning_list = elearning_list.replace('[','')
-    elearning_list = elearning_list.replace(']','')
     elearning_list = elearning_list.replace(', ','\n')
     elearning_list = elearning_list.replace('"','')
