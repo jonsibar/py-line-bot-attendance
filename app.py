@@ -25,6 +25,7 @@ from linebot.models import (
     ImageSendMessage)
 import jono
 import devina
+import hudiya
 
 app = Flask(__name__)
 
@@ -81,6 +82,12 @@ def handle_message(event):
 		line_bot_api.reply_message(
 			event.reply_token,
 			TextSendMessage(text=devina.attendance)
+			)
+
+	elif text == 'absen hudiya':
+		line_bot_api.reply_message(
+			event.reply_token,
+			TextSendMessage(text=hudiya.attendance)
 			)
 
 
