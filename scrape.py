@@ -7,7 +7,8 @@
 import requests
 from bs4 import BeautifulSoup
 import json
-
+import urllib3
+urllib3.disable_warnings()
 
 # In[2]:
 

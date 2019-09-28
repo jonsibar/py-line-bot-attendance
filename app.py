@@ -23,7 +23,7 @@ from linebot.models import (
     TextComponent, SpacerComponent, IconComponent, ButtonComponent,
     SeparatorComponent, QuickReply, QuickReplyButton,
     ImageSendMessage)
-from scraper import presensi, mats
+import scrape
 import login
 
 
@@ -73,16 +73,16 @@ def handle_message(event):
 	#profile = line_bot_api.get_profile(event.source.user_id)
 
 	if text == 'absen jono':
-		presensi(login.jono)
+		scrape.presensi(login.jono)
 		line_bot_api.reply_message(
 			event.reply_token,
-			TextSendMessage(text=attendance)
+			TextSendMessage(text=scrape.attendance)
 			)
 	elif text == 'elearning jono':
-		mats(login.jono)
+		scrape.mats(login.jono)
 		line_bot_api.reply_message(
 			event.reply_token,
-			TextSendMessage(text=elearning_list)
+			TextSendMessage(text=scrape.elearning_list)
 			)
 
 
@@ -92,29 +92,29 @@ def handle_message(event):
 		presensi(login.devina)
 		line_bot_api.reply_message(
 			event.reply_token,
-			TextSendMessage(text=attendance)
+			TextSendMessage(text=scrape.attendance)
 			)
 	elif text == 'elearning devina':
-		mats(login.devina)
+		scrape.mats(login.devina)
 		line_bot_api.reply_message(
 			event.reply_token,
-			TextSendMessage(text=elearning_list)
+			TextSendMessage(text=scrape.elearning_list)
 			)
 
 
 
 
 	elif text == 'absen hudiya':
-		presensi(login.hudiya)
+		scrape.presensi(login.hudiya)
 		line_bot_api.reply_message(
 			event.reply_token,
-			TextSendMessage(text=attendance)
+			TextSendMessage(text=scrape.attendance)
 			)
 	elif text == 'elearning hudiya':
-		mats(login.hudiya)
+		scrape.mats(login.hudiya)
 		line_bot_api.reply_message(
 			event.reply_token,
-			TextSendMessage(text=elearning_list)
+			TextSendMessage(text=scrape.elearning_list)
 			)
 
 
