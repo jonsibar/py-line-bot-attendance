@@ -77,3 +77,26 @@ attendance = attendance.replace(', ','\n')
 attendance = attendance.replace('"','')
 attendance = attendance.replace('\\u00a0', "-")
 
+
+#E-LEARNING:
+r=s.get(elearning, headers = headers)
+soup = BeautifulSoup(r.content, 'lxml')
+courses = soup.findAll('h2', class_='title')
+
+elearning_list = []
+
+for course in courses:
+    title = course.a['title']
+    elearning_list.append(title+ ', , ') 
+    url = course.a['href']
+    r=s.get(url, headers = headers)
+    soup = BeautifulSoup(r.content, 'lxml')
+    soup = soup.findAll('div', class_='activityinstance')
+    for file in soup:
+        file_name = file.span.text
+        file_url = file.a['href']
+        if 'File' in file_name and 'resource' in file_url:
+            file_name = file_name.replace(' File','')
+            elearning_list.append(file_name)
+            elearning_list.append(file_url)
+    elearning_list.append(', ')
