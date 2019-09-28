@@ -23,7 +23,7 @@ from linebot.models import (
     TextComponent, SpacerComponent, IconComponent, ButtonComponent,
     SeparatorComponent, QuickReply, QuickReplyButton,
     ImageSendMessage)
-from scraper import attendance, mats
+from scraper import presensi, mats
 import login
 
 
@@ -73,7 +73,7 @@ def handle_message(event):
 	#profile = line_bot_api.get_profile(event.source.user_id)
 
 	if text == 'absen jono':
-		attendance(login.jono)
+		presensi(login.jono)
 		line_bot_api.reply_message(
 			event.reply_token,
 			TextSendMessage(text=attendance)
@@ -89,7 +89,7 @@ def handle_message(event):
 
 
 	elif text == 'absen devina':
-		attendance(login.devina)
+		presensi(login.devina)
 		line_bot_api.reply_message(
 			event.reply_token,
 			TextSendMessage(text=attendance)
@@ -105,7 +105,7 @@ def handle_message(event):
 
 
 	elif text == 'absen hudiya':
-		attendance(login.hudiya)
+		presensi(login.hudiya)
 		line_bot_api.reply_message(
 			event.reply_token,
 			TextSendMessage(text=attendance)

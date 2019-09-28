@@ -11,7 +11,7 @@ import json
 
 # In[2]:
 
-def attendance(login_data):
+def presensi(login_data):
 
     login = 'https://sso.universitaspertamina.ac.id/login'
     siup = 'https://siup.universitaspertamina.ac.id/student/home'
