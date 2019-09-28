@@ -11,7 +11,7 @@ import json
 
 # In[2]:
 
-def scrape(login_data):
+def attendance(login_data):
 
     login = 'https://sso.universitaspertamina.ac.id/login'
     siup = 'https://siup.universitaspertamina.ac.id/student/home'
@@ -23,7 +23,6 @@ def scrape(login_data):
     
     # In[3]:
     global attendance
-    global elearning_list
     
     
     s = requests.session()
@@ -78,8 +77,28 @@ def scrape(login_data):
     
     
     
-    #E-LEARNING:
-    r=s.get(elearning, headers = headers)
+def mats(login_data):
+
+    login = 'https://sso.universitaspertamina.ac.id/login'
+    siup = 'https://siup.universitaspertamina.ac.id/student/home'
+    presensi = 'https://siup.universitaspertamina.ac.id/student/attendance'
+    elearning = 'https://elearning.universitaspertamina.ac.id/my/'
+    headers = {
+        'user-agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.134 Safari/537.36 Vivaldi/2.6.1546.4'
+    }
+    
+
+    global elearning_list
+    
+    
+    s = requests.session()
+    r = s.get(login, headers = headers)
+    soup = BeautifulSoup(r.content, 'lxml')
+    login_data['_token']=soup.find('input', attrs={'name':'_token'})['value']
+    r = s.post(login, headers = headers, data = login_data)
+    
+
+    r = s.get(elearning, headers = headers)
     soup = BeautifulSoup(r.content, 'lxml')
     courses = soup.findAll('h2', class_='title')
     
