@@ -91,12 +91,6 @@ def handle_message(event):
 			)
 
 
-	elif source = SourceUser:
-		line_bot_api.reply_message(
-			event.reply_token,
-			TextSendMessage(text="gangerti kak :("))
-
-
 
 
 
