@@ -23,8 +23,8 @@ from linebot.models import (
     TextComponent, SpacerComponent, IconComponent, ButtonComponent,
     SeparatorComponent, QuickReply, QuickReplyButton,
     ImageSendMessage)
-import attendance
-import attendance2
+import jono
+import devina
 
 app = Flask(__name__)
 
@@ -54,14 +54,14 @@ def handle_follow(event):
 	profile = line_bot_api.get_profile(event.source.user_id)
 	line_bot_api.reply_message(
 			event.reply_token,
-			TextSendMessage(text='Silahkan coba aku kak ' + profile.display_name)
+			TextSendMessage(text='Pake aku kak ' + profile.display_name)
 			)
 
 @handler.add(JoinEvent)
 def handle_join(event):
 	line_bot_api.reply_message(
 			event.reply_token,
-			TextSendMessage(text='Silahkan coba aku kak')
+			TextSendMessage(text='Pake aku kak')
 			)
 
 
@@ -71,23 +71,23 @@ def handle_message(event):
 	text = event.message.text.lower()
 	profile = line_bot_api.get_profile(event.source.user_id)
 
-	if text == 'absen':
+	if text == 'absen jono':
 		line_bot_api.reply_message(
 			event.reply_token,
-			TextSendMessage(text='Halo ' + profile.display_name + '\n' + attendance.attendance)
+			TextSendMessage(text='Halo ' + profile.display_name + '\n' + jono.attendance)
 			)
 
-	elif text == 'absen2':
+	elif text == 'absen dedep':
 		line_bot_api.reply_message(
 			event.reply_token,
-			TextSendMessage(text=attendance2.attendance)
+			TextSendMessage(text=devina.attendance)
 			)
 
 
 	else:
 		line_bot_api.reply_message(
 			event.reply_token,
-			TextSendMessage(text="ngomong apa bro"))
+			TextSendMessage(text="gangerti kak :("))
 
 
 
