@@ -82,7 +82,7 @@ attendance = attendance.replace('\\u00a0', "-")
 
 #E-LEARNING:
 r=s.get(elearning, headers = headers)
-soup = BeautifulSoup(r.content, 'html5lib')
+soup = BeautifulSoup(r.content, 'lxml')
 courses = soup.findAll('h2', class_='title')
 
 elearning_list = []
@@ -92,7 +92,7 @@ for course in courses:
     elearning_list.append(title)
     url = course.a['href']
     r=s.get(url, headers = headers)
-    soup = BeautifulSoup(r.content, 'html5lib')
+    soup = BeautifulSoup(r.content, 'lxml')
     soup = soup.findAll('div', class_='activityinstance')
     for file in soup:
         file_name = file.span.text
