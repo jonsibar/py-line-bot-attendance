@@ -20,8 +20,7 @@ elearning = 'https://elearning.universitaspertamina.ac.id/my/'
 headers = {
     'user-agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.134 Safari/537.36 Vivaldi/2.6.1546.4'
 }
-login_data = login.data
-
+login_data = [login.data]
 
 # In[3]:
 
