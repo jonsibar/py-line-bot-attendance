@@ -119,7 +119,7 @@ def mats(login_data):
                 file_name = file_name.replace(' File','')
                 elearning_list.append(file_name)
                 elearning_list.append(file_url)
-        elearning_list.append(', ')
+        elearning_list.append(',')
 
     
 
