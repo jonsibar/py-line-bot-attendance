@@ -15,6 +15,7 @@ import json
 login = 'https://sso.universitaspertamina.ac.id/login'
 siup = 'https://siup.universitaspertamina.ac.id/student/home'
 presensi = 'https://siup.universitaspertamina.ac.id/student/attendance'
+elearning = 'https://elearning.universitaspertamina.ac.id/my/'
 headers = {
     'user-agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.134 Safari/537.36 Vivaldi/2.6.1546.4'
 }
@@ -77,3 +78,33 @@ attendance = attendance.replace(', ','\n')
 attendance = attendance.replace('"','')
 attendance = attendance.replace('\\u00a0', "-")
 
+
+
+#E-LEARNING:
+r=s.get(elearning, headers = headers)
+soup = BeautifulSoup(r.content, 'html5lib')
+courses = soup.findAll('h2', class_='title')
+
+elearning_list = []
+
+for course in courses:
+    title = course.a['title']
+    elearning_list.append(title)
+    url = course.a['href']
+    r=s.get(url, headers = headers)
+    soup = BeautifulSoup(r.content, 'html5lib')
+    soup = soup.findAll('div', class_='activityinstance')
+    for file in soup:
+        file_name = file.span.text
+        file_url = file.a['href']
+        if 'File' in file_name and 'resource' in file_url:
+            file_name = file_name.replace(' File','')
+            elearning_list.append(file_name)
+            elearning_list.append(file_url)
+
+
+elearning_list = json.dumps(elearning_list)
+elearning_list = elearning_list.replace('[','')
+elearning_list = elearning_list.replace(']','')
+elearning_list = elearning_list.replace(', ','\n')
+elearning_list = elearning_list.replace('"','')

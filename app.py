@@ -78,16 +78,25 @@ def handle_message(event):
 			TextSendMessage(text=jono.attendance)
 			)
 
+
+
 	elif text == 'absen dedep':
 		line_bot_api.reply_message(
 			event.reply_token,
 			TextSendMessage(text=devina.attendance)
 			)
 
+
+
 	elif text == 'absen hudiya':
 		line_bot_api.reply_message(
 			event.reply_token,
 			TextSendMessage(text=hudiya.attendance)
+			)
+	elif text == 'elearning hudiya':
+		line_bot_api.reply_message(
+			event.reply_token,
+			TextSendMessage(text=hudiya.elearning_list)
 			)
 
 
