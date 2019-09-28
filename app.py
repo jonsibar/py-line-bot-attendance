@@ -95,7 +95,7 @@ def handle_message(event):
 			event.reply_token,
 			TextSendMessage(text=scraper.attendance)
 			)
-	elif text == 'elearning devina':
+	elif text == 'elearning dedep':
 		scraper.login_data = login.devina
 		line_bot_api.reply_message(
 			event.reply_token,
