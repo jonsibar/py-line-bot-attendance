@@ -59,10 +59,9 @@ def handle_follow(event):
 
 @handler.add(JoinEvent)
 def handle_join(event):
-	profile = line_bot_api.get_group_member_profile(event.source.user_id)
 	line_bot_api.reply_message(
 			event.reply_token,
-			TextSendMessage(text='Silahkan coba aku kak ' + profile.display_name)
+			TextSendMessage(text='Silahkan coba aku kak')
 			)
 
 
@@ -81,7 +80,8 @@ def handle_message(event):
 	elif text == 'absen2':
 		line_bot_api.reply_message(
 			event.reply_token,
-			TextSendMessage(text=attendance2.attendance))
+			TextSendMessage(text=attendance2.attendance)
+			)
 
 
 	else:
