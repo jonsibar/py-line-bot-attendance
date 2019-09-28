@@ -70,12 +70,12 @@ def handle_join(event):
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
 	text = event.message.text.lower()
-	profile = line_bot_api.get_profile(event.source.user_id)
+	#profile = line_bot_api.get_profile(event.source.user_id)
 
 	if text == 'absen jono':
 		line_bot_api.reply_message(
 			event.reply_token,
-			TextSendMessage(text='Halo ' + profile.display_name + '\n' + jono.attendance)
+			TextSendMessage(text=jono.attendance)
 			)
 
 	elif text == 'absen dedep':
@@ -92,9 +92,11 @@ def handle_message(event):
 
 
 	else:
+		if source = SourceUser
 		line_bot_api.reply_message(
 			event.reply_token,
 			TextSendMessage(text="gangerti kak :("))
+
 
 
 
