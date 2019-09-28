@@ -10,5 +10,3 @@ hudiya = {
     'username':'***REMOVED***',
     'password' : '***REMOVED***'
 }
-
-data = [jono,devina,hudiya]
