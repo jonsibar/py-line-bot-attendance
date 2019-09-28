@@ -106,11 +106,3 @@ def scrape(login_data):
     elearning_list = elearning_list.replace(']','')
     elearning_list = elearning_list.replace(', ','\n')
     elearning_list = elearning_list.replace('"','')
-
-
-
-
-
-
-if __name__ == '__main__':
-    scrape(login_data)
