@@ -131,6 +131,7 @@ def mats(login_data):
 
 
 def ujian(login_data):
+    global jadwal
 
     login = 'https://sso.universitaspertamina.ac.id/login'
     siup = 'https://siup.universitaspertamina.ac.id/student/home'
@@ -149,4 +150,4 @@ def ujian(login_data):
     soup = BeautifulSoup(r.content, 'lxml')
     soup = soup.findAll('tbody')[2]
     jadwal = soup.get_text(strip=True, separator='</td><td>').replace('</td><td>','\n')
-    global jadwal
+
