@@ -71,7 +71,7 @@ def handle_join(event):
 def handle_message(event):
     text = event.message.text.lower()
     #profile = line_bot_api.get_profile(event.source.user_id)
-    commands = ['absen', 'elearning']
+    commands = ['absen', 'elearning', 'ujian']
     names = ['jono', 'devina', 'hudiya', 'pikoy']
     for command in commands:
         if command in text.split():
