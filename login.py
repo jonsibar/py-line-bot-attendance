@@ -14,5 +14,3 @@ pikoy =  {
     'username':'***REMOVED***',
     'password' : '***REMOVED***'
 }
-
-names = {jono, pikoy, devina, hudiya}
