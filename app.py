@@ -100,6 +100,17 @@ def handle_message(event):
 
 
 
+    if 'budi' in text.split():
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text="apa bang"))
+
+    if 'koy' in text.split():
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text="kak pikoyyy~"))
+
+
 
 
 if __name__ == "__main__":
