@@ -83,6 +83,14 @@ def handle_message(event):
                             event.reply_token,
                             TextSendMessage(text=scrape.attendance)
                             )
+                    if command == 'elearning':
+                        scrape.mats(getattr(login,name))
+                        for pushmsg in scrape.elearning_list:
+                        line_bot_api.push_message(
+                            event.source.user_id, [
+                            TextSendMessage(text=pushmsg),
+                            ]
+                            )
 
 
 
