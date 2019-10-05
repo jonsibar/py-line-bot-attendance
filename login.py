@@ -10,3 +10,7 @@ hudiya = {
     'username':'***REMOVED***',
     'password' : '***REMOVED***'
 }
+pikoy =  {
+    'username':'***REMOVED***',
+    'password' : '***REMOVED***'
+}
