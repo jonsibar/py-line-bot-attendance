@@ -105,9 +105,11 @@ def mats(login_data):
     
     elearning_list = []
     
+    
     for course in courses:
+        files = []
         title = course.a['title']
-        elearning_list.append(title+ ', , ') 
+        files.append(title) 
         url = course.a['href']
         r=s.get(url, headers = headers)
         soup = BeautifulSoup(r.content, 'lxml')
@@ -117,16 +119,12 @@ def mats(login_data):
             file_url = file.a['href']
             if 'File' in file_name and 'resource' in file_url:
                 file_name = file_name.replace(' File','')
-                elearning_list.append(file_name)
-                elearning_list.append(file_url)
-        if course in range(len(courses)-1):
-            break
-        elearning_list.append(',')
+                files.append(file_name)
+                files.append(file_url)
+        output = str(files)
+        output = output.replace(', ','\n')
+        output = output.replace('"','')
+        output = output.replace("'",'')
+        output = print(output)
+        elearning_list.append(output)
 
-
-        
-    
-
-    elearning_list = json.dumps(elearning_list)
-    elearning_list = elearning_list.replace(', ','\n')
-    elearning_list = elearning_list.replace('"','')
