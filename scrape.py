@@ -129,3 +129,25 @@ def mats(login_data):
         output = output.replace(']','')
         elearning_list.append(output)
 
+
+def ujian(login_data):
+    global jadwal
+
+    login = 'https://sso.universitaspertamina.ac.id/login'
+    siup = 'https://siup.universitaspertamina.ac.id/student/home'
+    kalender = 'https://siup.universitaspertamina.ac.id/calendar/viewCalendar'
+    
+    headers = {
+        'user-agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.134 Safari/537.36 Vivaldi/2.6.1546.4'
+    }
+    s = requests.session()
+    r = s.get(login, headers = headers)
+    soup = BeautifulSoup(r.content, 'lxml')
+    login_data['_token']=soup.find('input', attrs={'name':'_token'})['value']
+    r = s.post(login, headers = headers, data = login_data)
+    r = s.get(siup, headers = headers)
+    r = s.get(kalender, headers = headers)
+    soup = BeautifulSoup(r.content, 'lxml')
+    soup = soup.findAll('tbody')[2]
+    jadwal = soup.get_text(strip=True, separator='</td><td>').replace('</td><td>','\n')
+

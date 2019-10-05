@@ -91,6 +91,12 @@ def handle_message(event):
                                 TextSendMessage(text=pushmsg),
                                 ]
                                 )
+                    if command == 'ujian':
+                        scrape.ujian(getattr(login,name))
+                        line_bot_api.reply_message(
+                            event.reply_token,
+                            TextSendMessage(text=scrape.jadwal)
+                            )
 
 
 
