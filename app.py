@@ -97,7 +97,7 @@ def handle_message(event):
 			TextSendMessage(text=scrape.attendance)
 			)
 	elif text == 'elearning devina':
-		scrape.mats(login.jono)
+		scrape.mats(login.devina)
 		for pushmsg in scrape.elearning_list:
 			line_bot_api.push_message(
 				event.source.user_id, [
@@ -116,7 +116,7 @@ def handle_message(event):
 			TextSendMessage(text=scrape.attendance)
 			)
 	elif text == 'elearning hudiya':
-		scrape.mats(login.jono)
+		scrape.mats(login.hudiya)
 		for pushmsg in scrape.elearning_list:
 			line_bot_api.push_message(
 				event.source.user_id, [
