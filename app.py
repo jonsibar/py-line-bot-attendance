@@ -79,11 +79,11 @@ for command in commands:
         for name in names:
             if name in text.split():
                 if command == 'absen':
-					scrape.presensi(getattr(login,name)())
-					line_bot_api.reply_message(
-					event.reply_token,
-					TextSendMessage(text=scrape.attendance)
-					)
+                    scrape.presensi(getattr(login,name)())
+                    line_bot_api.reply_message(
+                        event.reply_token,
+                        TextSendMessage(text=scrape.attendance)
+                        )
 
 
 
