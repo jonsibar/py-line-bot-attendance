@@ -83,7 +83,7 @@ def handle_message(event):
                             event.reply_token,
                             TextSendMessage(text=scrape.attendance)
                             )
-                    if command == 'elearning':
+                    elif command == 'elearning':
                         scrape.mats(getattr(login,name))
                         for pushmsg in scrape.elearning_list:
                             line_bot_api.push_message(
@@ -91,7 +91,7 @@ def handle_message(event):
                                 TextSendMessage(text=pushmsg),
                                 ]
                                 )
-                    if command == 'ujian':
+                    elif command == 'ujian':
                         scrape.ujian(getattr(login,name))
                         line_bot_api.reply_message(
                             event.reply_token,
@@ -105,10 +105,18 @@ def handle_message(event):
             event.reply_token,
             TextSendMessage(text="apa bang"))
 
-    if 'koy' in text.split():
+    elif 'koy' in text.split():
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text="kak pikoyyy~"))
+            TextSendMessage(text="kak pikoyyy"))
+
+    elif text == 'power ranger':
+        url = request.url_root + '/static/1.jpg'
+        app.logger.info("url=" + url)
+        line_bot_api.reply_message(
+            event.reply_token,
+            ImageSendMessage(url, url)
+        )
 
 
 
