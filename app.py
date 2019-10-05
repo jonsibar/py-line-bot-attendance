@@ -86,11 +86,11 @@ def handle_message(event):
                     if command == 'elearning':
                         scrape.mats(getattr(login,name))
                         for pushmsg in scrape.elearning_list:
-                        line_bot_api.push_message(
-                            event.source.user_id, [
-                            TextSendMessage(text=pushmsg),
-                            ]
-                            )
+                            line_bot_api.push_message(
+                                event.source.user_id, [
+                                TextSendMessage(text=pushmsg),
+                                ]
+                                )
 
 
 
