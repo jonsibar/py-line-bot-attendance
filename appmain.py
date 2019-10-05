@@ -71,19 +71,74 @@ def handle_join(event):
 def handle_message(event):
 	text = event.message.text.lower()
 	#profile = line_bot_api.get_profile(event.source.user_id)
-commands = ['absen', 'elearning']
-names = ['jono', 'devina', 'hudiya', 'pikoy']
 
-for command in commands:
-    if command in text.split():
-        for name in names:
-            if name in text.split():
-                if command == 'absen':
-					scrape.presensi(getattr(login,name)())
-					line_bot_api.reply_message(
-					event.reply_token,
-					TextSendMessage(text=scrape.attendance)
-					)
+	if text == 'absen jono':
+		scrape.presensi(login.jono)
+		line_bot_api.reply_message(
+			event.reply_token,
+			TextSendMessage(text=scrape.attendance)
+			)
+	elif text == 'elearning jono':
+		scrape.mats(login.jono)
+		for pushmsg in scrape.elearning_list:
+			line_bot_api.push_message(
+				event.source.user_id, [
+				TextSendMessage(text=pushmsg),
+				]
+			)
+
+
+
+
+	elif text == 'absen devina':
+		scrape.presensi(login.devina)
+		line_bot_api.reply_message(
+			event.reply_token,
+			TextSendMessage(text=scrape.attendance)
+			)
+	elif text == 'elearning devina':
+		scrape.mats(login.devina)
+		for pushmsg in scrape.elearning_list:
+			line_bot_api.push_message(
+				event.source.user_id, [
+				TextSendMessage(text=pushmsg),
+				]
+			)
+
+
+
+
+
+	elif text == 'absen hudiya':
+		scrape.presensi(login.hudiya)
+		line_bot_api.reply_message(
+			event.reply_token,
+			TextSendMessage(text=scrape.attendance)
+			)
+	elif text == 'elearning hudiya':
+		scrape.mats(login.hudiya)
+		for pushmsg in scrape.elearning_list:
+			line_bot_api.push_message(
+				event.source.user_id, [
+				TextSendMessage(text=pushmsg),
+				]
+			)
+
+
+	elif text == 'absen pikoy':
+		scrape.presensi(login.pikoy)
+		line_bot_api.reply_message(
+			event.reply_token,
+			TextSendMessage(text=scrape.attendance)
+			)
+	elif text == 'elearning pikoy':
+		scrape.mats(login.pikoy)
+		for pushmsg in scrape.elearning_list:
+			line_bot_api.push_message(
+				event.source.user_id, [
+				TextSendMessage(text=pushmsg),
+				]
+			)
 
 
 
