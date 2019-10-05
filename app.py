@@ -125,6 +125,20 @@ def handle_message(event):
 			)
 
 
+	elif text == 'absen pikoy':
+		presensi(login.pikoy)
+		line_bot_api.reply_message(
+			event.reply_token,
+			TextSendMessage(text=scrape.attendance)
+			)
+	elif text == 'elearning pikoy':
+		scrape.mats(login.pikoy)
+		for pushmsg in scrape.elearning_list:
+			line_bot_api.push_message(
+				event.source.user_id, [
+				TextSendMessage(text=pushmsg),
+				]
+			)
 
 
 
