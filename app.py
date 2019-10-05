@@ -111,7 +111,7 @@ def handle_message(event):
             TextSendMessage(text="kak pikoyyy"))
 
     elif text == 'power ranger':
-        url = request.url_root + '/static/1.jpg'
+        url = 'http://www.dumpaday.com/wp-content/uploads/2019/09/z-funny-41.jpg'
         app.logger.info("url=" + url)
         line_bot_api.reply_message(
             event.reply_token,
