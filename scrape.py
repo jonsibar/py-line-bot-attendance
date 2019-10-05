@@ -125,6 +125,7 @@ def mats(login_data):
         output = output.replace(', ','\n')
         output = output.replace('"','')
         output = output.replace("'",'')
-        output = print(output)
+        output = output.replace('[','')
+        output = output.replace(']','')
         elearning_list.append(output)
 
