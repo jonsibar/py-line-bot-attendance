@@ -91,7 +91,7 @@ def handle_message(event):
 
 
 	elif text == 'absen devina':
-		presensi(login.devina)
+		scrape.presensi(login.devina)
 		line_bot_api.reply_message(
 			event.reply_token,
 			TextSendMessage(text=scrape.attendance)
@@ -126,7 +126,7 @@ def handle_message(event):
 
 
 	elif text == 'absen pikoy':
-		presensi(login.pikoy)
+		scrape.presensi(login.pikoy)
 		line_bot_api.reply_message(
 			event.reply_token,
 			TextSendMessage(text=scrape.attendance)
