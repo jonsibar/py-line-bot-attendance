@@ -50,19 +50,23 @@ def callback():
 
     return 'OK'
 
+
+
+auto1 = 'Hai, ' + profile.display_name + '\nSaya Budi, budak digital yang siap membantu keperluan bolosmu :D\nSilahkan ketik /perintah jika kamu bingung'
+
 @handler.add(FollowEvent)
 def handle_follow(event):
 	profile = line_bot_api.get_profile(event.source.user_id)
 	line_bot_api.reply_message(
 			event.reply_token,
-			TextSendMessage(text='Pake aku kak ' + profile.display_name)
+			TextSendMessage(text=auto1)
 			)
 
 @handler.add(JoinEvent)
 def handle_join(event):
 	line_bot_api.reply_message(
 			event.reply_token,
-			TextSendMessage(text='Pake aku kak')
+			TextSendMessage(text=auto1)
 			)
 
 
@@ -71,19 +75,19 @@ def handle_join(event):
 def handle_message(event):
     text = event.message.text.lower()
     #profile = line_bot_api.get_profile(event.source.user_id)
-    commands = ['absen', 'elearning', 'ujian']
+    commands = ['/absen', '/elearning', '/ujian']
     names = ['jono', 'devina', 'hudiya', 'pikoy']
     for command in commands:
         if command in text.split():
             for name in names:
                 if name in text.split():
-                    if command == 'absen':
+                    if command == '/absen':
                         scrape.presensi(getattr(login,name))
                         line_bot_api.reply_message(
                             event.reply_token,
                             TextSendMessage(text=scrape.attendance)
                             )
-                    elif command == 'elearning':
+                    elif command == '/elearning':
                         scrape.mats(getattr(login,name))
                         for pushmsg in scrape.elearning_list:
                             line_bot_api.push_message(
@@ -91,7 +95,7 @@ def handle_message(event):
                                 TextSendMessage(text=pushmsg),
                                 ]
                                 )
-                    elif command == 'ujian':
+                    elif command == '/ujian':
                         scrape.ujian(getattr(login,name))
                         line_bot_api.reply_message(
                             event.reply_token,
@@ -99,25 +103,51 @@ def handle_message(event):
                             )
 
 
+    if '/perintah' in text.split():
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text="1. /absen nama\n2./elearning nama\n3./ujian nama"))
 
-    if 'budi' in text.split():
+
+    elif 'budi' in text.split():
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text="apa bang"))
+    elif 'hai' or 'halo' or 'salken' and 'budi' in text.split():
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=auto1))
 
     elif 'koy' in text.split():
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text="kak pikoyyy"))
 
-    elif text == 'power ranger':
-        url = open('1.jpg','rb')
+    elif 'tasnim' in text.split():
         line_bot_api.reply_message(
             event.reply_token,
-            ImageSendMessage(url, url)
-        )
+            TextSendMessage(text='itu punya kak pikoyyy'))
 
-
+    elif 'hudiya' and 'fadhil' in text.split():
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text='mending fadhil kemana2 lahh'))
+    elif 'hud' in text.split():
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text='woy dipanggil hud jangan bengong ajaa'))
+    elif 'wkwkw' or 'wkwkwk' or 'kwkwk' or 'kwkwkwk' or 'wkwkwkwkw' in text.splt():
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text='tawa mulu bukan mikir'))
+    elif 'jangan' in text.split():
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text='siapa elu ngatur2?'))
+    elif 'anjing' in text.split():
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text='gnijna'))
 
 
 if __name__ == "__main__":
