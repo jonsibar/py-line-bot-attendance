@@ -243,7 +243,7 @@ def bolos(login_data):
                 p=p+1
             kh.append(ad)
     
-            if pg.findAll('li', class_='next'):
+            if td.findAll('li', class_='next'):
                 soup=tr.findAll('li', class_='next')
                 url = soup2.a['href']
                 r = s.get(url, headers = headers)
@@ -255,5 +255,5 @@ def bolos(login_data):
                     else:
                         p=p+1
                     kh.append(ad)
-        alpstr=subject_dict[i]+'\nHadir           = '+str(p)+'\nAlpa            = '+str(a)+'\nSisa jatah alpa = '+str(alimit-a)
+        alpstr=subject_dict[i]+'\nHadir = '+str(p)+'\nAlpa = '+str(a)+'\nJatah bolos = '+str(alimit-a)
         absen_str.append(alpstr)
