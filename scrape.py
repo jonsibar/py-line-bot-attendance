@@ -220,7 +220,7 @@ def bolos(login_data):
                     det=datetime.strptime(det, '%Y-%m-%d').date()
                     dates.append(det)
         dates=sorted(dates)
-        if abs(dates[1] - dates[0]) < timedelta(days=7):
+        if abs(dates[1] - dates[0]) < timedelta(days=7) or abs(dates[2] - dates[1] < timedelta(days=7) or abs(dates[3] - dates[2] < timedelta(days=7):
             cpw=2
             alimit=6
         else:
