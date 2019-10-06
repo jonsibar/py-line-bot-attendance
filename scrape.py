@@ -151,3 +151,108 @@ def ujian(login_data):
     soup = soup.findAll('tbody')[2]
     jadwal = soup.get_text(strip=True, separator='</td><td>').replace('</td><td>','\n')
 
+
+
+def bolos(login_data):
+    global absen_str
+    
+    login = 'https://sso.universitaspertamina.ac.id/login'
+    siup = 'https://siup.universitaspertamina.ac.id/student/home'
+    presensi = 'https://siup.universitaspertamina.ac.id/student/attendance'
+    elearning = 'https://elearning.universitaspertamina.ac.id/my/'
+    headers = {
+        'user-agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.134 Safari/537.36 Vivaldi/2.6.1546.4'
+    }
+    
+    
+    
+    s = requests.session()
+    r = s.get(login, headers = headers)
+    soup = BeautifulSoup(r.content, 'lxml')
+    login_data['_token']=soup.find('input', attrs={'name':'_token'})['value']
+    r = s.post(login, headers = headers, data = login_data)
+    r = s.get(siup, headers = headers)
+    
+    
+    
+    r = s.get(presensi, headers = headers)
+    soup = BeautifulSoup(r.content, 'lxml')
+    soup = soup.findAll('tr', class_ =['even', 'odd'])
+    
+    
+    subject_list = []
+    for subject in soup:
+        subjects = subject.findAll('td')[1].text
+        subject_list.append(subjects)
+    
+    
+    ra=soup[0].find('input', {'name':'ra'})['value']
+    k=[]
+    for value in soup:
+        k.append(value.find('input', {'name':'k'})['value'])
+    subject_dict=dict(zip(k, subject_list))
+    
+    
+    absen_str=[]
+    
+    for i in k:
+        dates=[]
+        kh=[]
+        url = 'https://siup.universitaspertamina.ac.id/student/attendanceDetail?ra='+ra+'&k='+i
+        r=s.get(url, headers = headers)
+        soup = BeautifulSoup(r.content, 'lxml')
+        soup = soup.findAll('tr', class_ =['even', 'odd'])
+        for tr in soup:
+            det=tr.td
+            det=det.get_text(strip=True)
+            det=datetime.strptime(det, '%Y-%m-%d').date()
+            dates.append(det)
+            if len(dates) >1:
+                if abs(dates[1] - dates[0]) < timedelta(days=7):
+                    cpw=2
+                    alimit=6
+                else:
+                    cpw=1
+                    alimit=3
+            if tr.findAll('li', class_='next'):
+                soup=tr.findAll('li', class_='next')
+                url = soup2.a['href']
+                r = s.get(url, headers = headers)
+                soup = BeautifulSoup(r.content, 'lxml')
+                soup = soup.findAll('tr', class_ =['even', 'odd'])
+                for tr in soup:
+                    det=tr.td
+                    det=det.get_text(strip=True)
+                    det=datetime.strptime(det, '%Y-%m-%d').date()
+                    dates.append(det)
+                    if len(dates) >1:
+                        if abs(dates[1] - dates[0]) < timedelta(days=7):
+                            cpw=2
+                            alimit=6
+                        else:
+                            cpw=1
+                            alimit=3
+        a=0
+        p=0
+        for td in soup:
+            ad=td.findAll('td')[4].get_text(strip=True)
+            if ad == 'Alpa':
+                a=a+1
+            else:
+                p=p+1
+            kh.append(ad)
+    
+            if pg.findAll('li', class_='next'):
+                soup=tr.findAll('li', class_='next')
+                url = soup2.a['href']
+                r = s.get(url, headers = headers)
+                soup = BeautifulSoup(r.content, 'lxml')
+                soup = soup.findAll('tr', class_ =['even', 'odd'])
+                for td in soup:
+                    if ad == 'Alpa':
+                        a=a+1
+                    else:
+                        p=p+1
+                    kh.append(ad)
+        alpstr=subject_dict[i]+'\nHadir           = '+str(p)+'\nAlpa            = '+str(a)+'\nSisa jatah alpa = '+str(alimit-a)
+        absen_str.append(alpstr)

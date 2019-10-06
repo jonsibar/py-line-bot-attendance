@@ -75,7 +75,7 @@ def handle_join(event):
 def handle_message(event):
     text = event.message.text.lower()
     profile = line_bot_api.get_profile(event.source.user_id)
-    commands = ['/absen', '/elearning', '/ujian', '/user']
+    commands = ['/absen', '/jatah', '/elearning', '/ujian', '/user']
     names = ['jono', 'devina', 'hudiya', 'pikoy']
     for command in commands:
         if command in text.split():
@@ -87,17 +87,33 @@ def handle_message(event):
                             event.reply_token,
                             TextSendMessage(text=scrape.attendance)
                             )
-                    elif command == '/elearning':
-                        scrape.mats(getattr(login,name))
+                    elif command == '/jatah':
+                        scrape.bolos(getattr(login,name))
                         if hasattr(event.source, 'group_id'):
-                            for pushmsg in pushlist:
+                            for pushmsg in scrape.absen_str:
                                 line_bot_api.push_message(
                                     event.source.group_id, [
                                     TextSendMessage(text=pushmsg),
                                     ]
                                     )
                         else:
-                             for pushmsg in pushlist:
+                             for pushmsg in scrape.absen_str:
+                                line_bot_api.push_message(
+                                    event.source.user_id, [
+                                    TextSendMessage(text=pushmsg),
+                                    ]
+                                    )
+                    elif command == '/elearning':
+                        scrape.mats(getattr(login,name))
+                        if hasattr(event.source, 'group_id'):
+                            for pushmsg in scrape.elearning_list:
+                                line_bot_api.push_message(
+                                    event.source.group_id, [
+                                    TextSendMessage(text=pushmsg),
+                                    ]
+                                    )
+                        else:
+                             for pushmsg in scrape.elearning_list:
                                 line_bot_api.push_message(
                                     event.source.user_id, [
                                     TextSendMessage(text=pushmsg),
