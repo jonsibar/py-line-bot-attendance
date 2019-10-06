@@ -194,7 +194,7 @@ def bolos(login_data):
     subject_dict=dict(zip(k, subject_list))
     
     
-    absen_str=[]
+    absen_list=[]
     
     for i in k:
         dates=[]
@@ -257,3 +257,9 @@ def bolos(login_data):
                     kh.append(ad)
         alpstr=subject_dict[i]+'\nHadir = '+str(p)+'\nAlpa = '+str(a)+'\nJatah bolos = '+str(alimit-a)
         absen_str.append(alpstr)
+
+    absen_list=json.dumps(absen_list)
+    absen_list = absen_list.replace('[','')
+    absen_list = absen_list.replace(']','')
+    absen_list = absen_list.replace("'",'')
+    absen_list = absen_list.replace(', ','\n')
