@@ -89,7 +89,6 @@ def handle_message(event):
                             )
                     elif command == '/elearning':
                         scrape.mats(getattr(login,name))
-                        pushlist=[scrape.elearning_list[i:i+2000] for i in range(0, len(scrape.elearning_list),2000)]
                         if hasattr(event.source, 'group_id'):
                             for pushmsg in pushlist:
                                 line_bot_api.push_message(

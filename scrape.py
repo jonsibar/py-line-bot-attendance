@@ -128,11 +128,6 @@ def mats(login_data):
         output = output.replace('[','')
         output = output.replace(']','')
         elearning_list.append(output)
-    elearning_list = json.dumps(elearning_list)
-    elearning_list = elearning_list.replace('{','')
-    elearning_list = elearning_list.replace('}','')
-    elearning_list = elearning_list.replace(', ','\n')
-    elearning_list = elearning_list.replace('"','')
 
 
 def ujian(login_data):
