@@ -25,7 +25,6 @@ from linebot.models import (
     ImageSendMessage)
 import scrape
 import login
-from datetime import datetime, timedelta
 
 app = Flask(__name__)
 
