@@ -88,18 +88,10 @@ def handle_message(event):
                             )
                     elif command == '/jatah':
                         scrape.bolos(getattr(login,name))
-                        if hasattr(event.source, 'group_id'):
-                            line_bot_api.push_message(
-                                event.source.group_id, [
-                                TextSendMessage(text=scrape.absen_list),
-                                ]
-                                )
-                        else:
-                            line_bot_api.push_message(
-                                event.source.user_id, [
-                                TextSendMessage(text=scrape.absen_list),
-                                ]
-                                )
+                        line_bot_api.reply_message(
+                            event.reply_token,
+                            TextSendMessage(text=scrape.absen_list)
+                            )
                     elif command == '/elearning':
                         scrape.mats(getattr(login,name))
                         if hasattr(event.source, 'group_id'):
