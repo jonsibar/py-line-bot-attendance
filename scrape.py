@@ -219,7 +219,7 @@ def bolos(login_data):
                     det=det.get_text(strip=True)
                     det=datetime.strptime(det, '%Y-%m-%d').date()
                     dates.append(det)
-        dates=dates.sort()
+        dates=sorted(dates)
         sorteddates=[datetime.strptime(ts, '%Y-%m-%d') for ts in dates]
         if abs(dates[1] - dates[0]) < timedelta(days=7):
             cpw=2
