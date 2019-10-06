@@ -52,21 +52,20 @@ def callback():
 
 
 
-auto1 = 'Hai, ' + profile.display_name + '\nSaya Budi, budak digital yang siap membantu keperluan bolosmu :D\nSilahkan ketik /perintah jika kamu bingung'
 
 @handler.add(FollowEvent)
 def handle_follow(event):
 	profile = line_bot_api.get_profile(event.source.user_id)
 	line_bot_api.reply_message(
 			event.reply_token,
-			TextSendMessage(text=auto1)
+			TextSendMessage(text='Hai, ' + profile.display_name + '\nSaya Budi, budak digital yang siap membantu keperluan bolosmu :D\nSilahkan ketik /perintah jika kamu bingung')
 			)
 
 @handler.add(JoinEvent)
 def handle_join(event):
 	line_bot_api.reply_message(
 			event.reply_token,
-			TextSendMessage(text=auto1)
+			TextSendMessage(text='Hai, ' + profile.display_name + '\nSaya Budi, budak digital yang siap membantu keperluan bolosmu :D\nSilahkan ketik /perintah jika kamu bingung')
 			)
 
 
@@ -116,7 +115,7 @@ def handle_message(event):
     elif 'hai' or 'halo' or 'salken' and 'budi' in text.split():
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text=auto1))
+            TextSendMessage(text='Hai, ' + profile.display_name + '\nSaya Budi, budak digital yang siap membantu keperluan bolosmu :D\nSilahkan ketik /perintah jika kamu bingung'))
 
     elif 'koy' in text.split():
         line_bot_api.reply_message(
