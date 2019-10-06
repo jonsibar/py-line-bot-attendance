@@ -105,17 +105,20 @@ def handle_message(event):
     if '/perintah' in text.split():
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text="1. /absen nama\n2./elearning nama\n3./ujian nama"))
+            TextSendMessage(text="1./absen\n2./elearning\n3./ujian"))
+
+    elif 'hai' or 'halo' or 'salken' and 'budi' in text.split():
+        profile = line_bot_api.get_profile(event.source.user_id)
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text='Hai, ' + profile.display_name + '\nSaya Budi, budak digital yang siap membantu keperluan bolosmu :D\nSilahkan ketik /perintah jika kamu bingung'))
 
 
     elif 'budi' in text.split():
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text="apa bang"))
-    elif 'hai' or 'halo' or 'salken' and 'budi' in text.split():
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text='Hai, ' + profile.display_name + '\nSaya Budi, budak digital yang siap membantu keperluan bolosmu :D\nSilahkan ketik /perintah jika kamu bingung'))
+
 
     elif 'koy' in text.split():
         line_bot_api.reply_message(
