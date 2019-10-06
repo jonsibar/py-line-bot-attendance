@@ -260,7 +260,7 @@ def bolos(login_data):
 
     absen_list=json.dumps(absen_list)
     absen_list=absen_list.replace('"','')
+    absen_list=absen_list.replace(', ','\n\n')
     absen_list=absen_list.replace('\\n','\n')
-    absen_list=absen_list.replace(', ','\n')
     absen_list=absen_list.replace('[','')
     absen_list=absen_list.replace(']','')
