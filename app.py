@@ -168,7 +168,7 @@ def handle_message(event):
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text='siapa elu ngatur2?'))
-    curses = ['babi', 'babi', 'bangsat', 'bgsd', 'bangsad', 'bgst', 'gblok', 'gblog', 'gblg', 'goblok', 'goblog', 'tolol', 'tlol']
+    curses = ['babi', 'babi', 'bangsat', 'bgsd', 'bangsad', 'bgst', 'gblok', 'gblog', 'gblg', 'goblok', 'goblog', 'tolol', 'tlol', 'blog', 'tai']
     for curse in curses:
         if curse in text.split():
             line_bot_api.reply_message(
@@ -178,7 +178,10 @@ def handle_message(event):
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=text.replace('anjing', 'pikoy')))
-
+    elif 'daftar' in text.split() or 'cara' in text.split() and 'budi' in text.split():
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text='Jika ingin menikmati fiturnya,\nSilahkan chat budi dengan username dan password sso mu'))
 
 
 
