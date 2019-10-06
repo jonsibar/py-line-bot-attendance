@@ -64,7 +64,7 @@ def handle_follow(event):
 def handle_join(event):
     line_bot_api.reply_message(
         event.reply_token,
-        TextSendMessage(text='Hai para penggangguran '+ '\nSaya Budi, budak digital yang siap membantu keperluan bolosmu :D\nSilahkan ketik /perintah jika kamu bingung'
+        TextSendMessage(text='Hai gais '+ '\nSaya Budi, budak digital yang siap membantu keperluan bolosmu :D\nSilahkan ketik /perintah jika kamu bingung'
             )
         )
 
