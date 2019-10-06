@@ -89,12 +89,11 @@ def handle_message(event):
                             )
                     elif command == '/elearning':
                         scrape.mats(getattr(login,name))
-                        for pushmsg in scrape.elearning_list:
-                            line_bot_api.reply_message(
-                                event.reply_token, [
-                                TextSendMessage(text=pushmsg),
-                                ]
-                                )
+                        line_bot_api.reply_message(
+                            event.reply_token, [
+                            TextSendMessage(text=scrape.elearning_list),
+                            ]
+                            )
                     elif command == '/ujian':
                         scrape.ujian(getattr(login,name))
                         line_bot_api.reply_message(
@@ -111,7 +110,7 @@ def handle_message(event):
     elif '/user' in text.split():
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text=names))
+            TextSendMessage(text=str(names)))
 
     elif 'hai' in text.split() or 'halo' in text.split() or 'salken' in text.split() and 'budi' in text.split():
         profile = line_bot_api.get_profile(event.source.user_id)
