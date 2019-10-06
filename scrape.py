@@ -259,8 +259,8 @@ def bolos(login_data):
         absen_list.append(alpstr)
 
     absen_list=json.dumps(absen_list)
-    absen_str=absen_str.replace('"','')
-    absen_str=absen_str.replace('\\n','\n')
-    absen_str=absen_str.replace(', ','\n')
-    absen_str=absen_str.replace('[','')
-    absen_str=absen_str.replace(']','')
+    absen_list=absen_list.replace('"','')
+    absen_list=absen_list.replace('\\n','\n')
+    absen_list=absen_list.replace(', ','\n')
+    absen_list=absen_list.replace('[','')
+    absen_list=absen_list.replace(']','')
