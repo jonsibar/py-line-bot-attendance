@@ -75,7 +75,7 @@ def handle_join(event):
 def handle_message(event):
     text = event.message.text.lower()
     profile = line_bot_api.get_profile(event.source.user_id)
-    commands = ['/absen', '/elearning', '/ujian']
+    commands = ['/absen', '/elearning', '/ujian', '/user']
     names = ['jono', 'devina', 'hudiya', 'pikoy']
     for command in commands:
         if command in text.split():
@@ -90,8 +90,8 @@ def handle_message(event):
                     elif command == '/elearning':
                         scrape.mats(getattr(login,name))
                         for pushmsg in scrape.elearning_list:
-                            line_bot_api.push_message(
-                                event.source.user_id, [
+                            line_bot_api.reply_message(
+                                event.reply_token, [
                                 TextSendMessage(text=pushmsg),
                                 ]
                                 )
@@ -106,7 +106,12 @@ def handle_message(event):
     if '/perintah' in text.split():
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text="1./absen\n2./elearning\n3./ujian"))
+            TextSendMessage(text="1./absen\n2./elearning\n3./ujian\n4./user"))
+
+    elif '/user' in text.split():
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=names))
 
     elif 'hai' in text.split() or 'halo' in text.split() or 'salken' in text.split() and 'budi' in text.split():
         profile = line_bot_api.get_profile(event.source.user_id)
@@ -149,12 +154,16 @@ def handle_message(event):
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text='siapa elu ngatur2?'))
-    curses = ['anjing', 'babi', 'babi', 'bangsat', 'bgsd', 'bangsad', 'bgst', 'anjg', 'gblok', 'gblog', 'gblg', 'goblok', 'goblog', 'tolol', 'tlol']
+    curses = ['babi', 'babi', 'bangsat', 'bgsd', 'bangsad', 'bgst', 'gblok', 'gblog', 'gblg', 'goblok', 'goblog', 'tolol', 'tlol']
     for curse in curses:
         if curse in text.split():
             line_bot_api.reply_message(
                 event.reply_token,
                 TextSendMessage(text='lo yg '+curse))
+    if 'anjing' in text.split():
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=text.replace('anjing', 'pikoy')))
 
 
 
