@@ -155,7 +155,7 @@ def ujian(login_data):
 
 
 def bolos(login_data):
-    global absen_str
+    global absen_list
     
     login = 'https://sso.universitaspertamina.ac.id/login'
     siup = 'https://siup.universitaspertamina.ac.id/student/home'
@@ -256,7 +256,7 @@ def bolos(login_data):
                         p=p+1
                     kh.append(ad)
         alpstr=subject_dict[i]+'\nHadir = '+str(p)+'\nAlpa = '+str(a)+'\nJatah bolos = '+str(alimit-a)
-        absen_str.append(alpstr)
+        absen_list.append(alpstr)
 
     absen_list=json.dumps(absen_list)
     absen_list = absen_list.replace('[','')
