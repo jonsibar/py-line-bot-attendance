@@ -107,7 +107,7 @@ def handle_message(event):
             event.reply_token,
             TextSendMessage(text="1./absen\n2./elearning\n3./ujian"))
 
-    elif 'hai' or 'halo' or 'salken' and 'budi' in text.split():
+    elif 'hai' in text.split() or 'halo' in text.split() or 'salken' in text.split() and 'budi' in text.split():
         profile = line_bot_api.get_profile(event.source.user_id)
         line_bot_api.reply_message(
             event.reply_token,
@@ -138,10 +138,12 @@ def handle_message(event):
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text='woy dipanggil hud jangan bengong ajaa'))
-    elif 'wkwkw' or 'wkwkwk' or 'kwkwk' or 'kwkwkwk' or 'wkwkwkwkw' in text.splt():
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text='tawa mulu bukan mikir'))
+    lols = ['wkwk','wkwkwk','kwkw','kwkwk','kwkwkw','wkwkw']
+    for lol in lols:
+        if lol in text.split():
+            line_bot_api.reply_message(
+                event.reply_token,
+                TextSendMessage(text='tawa mulu bukan mikir'))
     elif 'jangan' in text.split():
         line_bot_api.reply_message(
             event.reply_token,
