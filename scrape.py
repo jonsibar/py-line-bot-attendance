@@ -208,6 +208,14 @@ def bolos(login_data):
             det=det.get_text(strip=True)
             det=datetime.strptime(det, '%Y-%m-%d').date()
             dates.append(det)
+            dates=dates.sort()
+            if len(dates) >1:
+                if abs(dates[1] - dates[0]) < timedelta(days=7):
+                    cpw=2
+                    alimit=6
+                else:
+                    cpw=1
+                    alimit=3
             if tr.findAll('li', class_='next'):
                 soup=tr.findAll('li', class_='next')
                 url = soup2.a['href']
@@ -219,14 +227,6 @@ def bolos(login_data):
                     det=det.get_text(strip=True)
                     det=datetime.strptime(det, '%Y-%m-%d').date()
                     dates.append(det)
-        dates=dates.sort()
-        if abs(dates[1] - dates[0]) < timedelta(days=7):
-            cpw=2
-            alimit=6
-        else:
-            cpw=1
-            alimit=3
-
         a=0
         p=0
         for td in soup:
