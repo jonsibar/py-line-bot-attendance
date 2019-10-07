@@ -144,13 +144,15 @@ def handle_message(event):
             event.reply_token,
             TextSendMessage(text="apa bang"))
 
-    elif 'anjing' in text.split() or 'anjg' in text.split():
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text=text.replace[('anjing', 'pikoy'),('anjg','pikoy')]))
+    anjg = ['anjing','anjg','anjeng','jeng']
+    for anj in anjg:
+        if anj in text.split():
+            line_bot_api.reply_message(
+                event.reply_token,
+                TextSendMessage(text=text.replace(anj, 'pikoy'))
 
 
-    elif 'koy' in text.split() or 'qoy' in text.split():
+    if 'koy' in text.split() or 'qoy' in text.split():
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text="kak pikoyyy"))
