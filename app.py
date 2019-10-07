@@ -72,7 +72,6 @@ def handle_join(event):
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     text = event.message.text.lower()
-    profile = line_bot_api.get_profile(event.source.user_id)
     commands = ['/absen', '/jatah', '/elearning', '/ujian', '/user']
     names = ['jono', 'devina', 'hudiya', 'pikoy']
     for command in commands:
