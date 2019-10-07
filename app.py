@@ -134,7 +134,7 @@ def handle_message(event):
 
     curses = ['babi', 'babi', 'bangsat', 'bgsd', 'bangsad', 'bgst', 'gblok', 'gblog', 'gblg', 'goblok', 'goblog', 'tolol', 'tlol', 'blog', 'tai']
     for curse in curses:
-        if curse in text.split():
+        if curse in text:
             line_bot_api.reply_message(
                 event.reply_token,
                 TextSendMessage(text='lo yg '+curse))
