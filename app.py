@@ -191,7 +191,7 @@ def handle_message(event):
             event.reply_token,
             TextSendMessage(text='perdi')
             )
-    elif 'perdi' in text.split():
+    elif 'perdi' in text.split() or 'per' in text.split() or 'fer' in text.split():
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text='apa2 perdi mulu'))
