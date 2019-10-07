@@ -139,7 +139,7 @@ def handle_message(event):
             TextSendMessage(text="apa bang"))
 
 
-    elif 'koy' in text.split():
+    elif 'koy' in text.split() or 'qoy' in text.split():
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text="kak pikoyyy"))
