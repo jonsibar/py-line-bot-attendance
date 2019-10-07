@@ -73,7 +73,7 @@ def handle_join(event):
 def handle_message(event):
     text = event.message.text.lower()
     commands = ['/absen', '/jatah', '/elearning', '/ujian', '/user']
-    names = ['jono', 'devina', 'hudiya', 'pikoy']
+    names = ['jono', 'devina', 'hudiya', 'pikoy', 'jeki']
     for command in commands:
         if command in text.split():
             for name in names:
@@ -173,7 +173,7 @@ def handle_message(event):
             line_bot_api.reply_message(
                 event.reply_token,
                 TextSendMessage(text='lo yg '+curse))
-    if 'anjing' in text.split():
+    if 'anjing' in text.split() or 'anjg' in text.split():
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=text.replace('anjing', 'pikoy')))
