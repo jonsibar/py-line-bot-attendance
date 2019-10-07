@@ -14,3 +14,7 @@ pikoy =  {
     'username':'***REMOVED***',
     'password' : '***REMOVED***'
 }
+jeki = {
+	'username':'***REMOVED***',
+	'password':'***REMOVED***'
+}
