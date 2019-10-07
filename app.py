@@ -142,7 +142,8 @@ def handle_message(event):
     if 'budi' in text.split():
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text="apa bang"))
+            TextSendMessage(text="apa bang")
+            )
 
     anjg = ['anjing','anjg','anjeng','jeng']
     for anj in anjg:
@@ -150,6 +151,7 @@ def handle_message(event):
             line_bot_api.reply_message(
                 event.reply_token,
                 TextSendMessage(text=text.replace(anj, 'pikoy'))
+                )
 
 
     if 'koy' in text.split() or 'qoy' in text.split():
