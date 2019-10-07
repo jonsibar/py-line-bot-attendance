@@ -197,6 +197,8 @@ def bolos(login_data):
     absen_list=[]
     
     for i in k:
+        if i == '3726':
+            continue
         dates=[]
         kh=[]
         url = 'https://siup.universitaspertamina.ac.id/student/attendanceDetail?ra='+ra+'&k='+i
@@ -220,16 +222,14 @@ def bolos(login_data):
                     det=datetime.strptime(det, '%Y-%m-%d').date()
                     dates.append(det)
         dates=sorted(dates)
-        if dates:
-
-            if abs(dates[1] - dates[0]) < timedelta(days=7) or abs(dates[2] - dates[1]) < timedelta(days=7) or abs(dates[3] - dates[2]) < timedelta(days=7):
-                cpw=2
-                alimit=6
-            else:
-                cpw=1
-                alimit=3
-            a=0
-            p=0
+        if abs(dates[1] - dates[0]) < timedelta(days=7) or abs(dates[2] - dates[1]) < timedelta(days=7) or abs(dates[3] - dates[2]) < timedelta(days=7):
+            cpw=2
+            alimit=6
+         else:
+            cpw=1
+            alimit=3
+        a=0
+        p=0
         for td in soup:
             ad=td.findAll('td')[4].get_text(strip=True)
             if ad == 'Alpa':
