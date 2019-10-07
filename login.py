@@ -18,3 +18,7 @@ jeki = {
 	'username':'***REMOVED***',
 	'password':'***REMOVED***'
 }
+usul = {
+	'username' : '***REMOVED***'
+	'password' : 'adaapadengancinta'
+}
