@@ -138,6 +138,11 @@ def handle_message(event):
             event.reply_token,
             TextSendMessage(text="apa bang"))
 
+    elif 'anjing' in text.split() or 'anjg' in text.split():
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=text.replace[('anjing', 'pikoy'),('anjg','pikoy')]))
+
 
     elif 'koy' in text.split() or 'qoy' in text.split():
         line_bot_api.reply_message(
@@ -157,7 +162,7 @@ def handle_message(event):
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text='woy dipanggil hud jangan bengong aja'))
-    lols = ['wk','kw']
+    lols = ['wk','kw','wak']
     for lol in lols:
         if lol in text:
             line_bot_api.reply_message(
@@ -173,11 +178,7 @@ def handle_message(event):
             line_bot_api.reply_message(
                 event.reply_token,
                 TextSendMessage(text='lo yg '+curse))
-    if 'anjing' in text.split() or 'anjg' in text.split():
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text=text.replace('anjing', 'pikoy')))
-    elif 'daftar' in text.split() or 'cara' in text.split() and 'budi' in text.split():
+    if 'daftar' in text.split() or 'cara' in text.split() and 'budi' in text.split():
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text='Jika ingin menikmati fiturnya,\nSilahkan chat budi dengan username dan password sso mu'))
