@@ -159,7 +159,7 @@ def handle_message(event):
             TextSendMessage(text='woy dipanggil hud jangan bengong aja'))
     lols = ['wk','kw']
     for lol in lols:
-        if lol in text.split():
+        if lol in text:
             line_bot_api.reply_message(
                 event.reply_token,
                 TextSendMessage(text='tawa mulu bukan mikir'))
