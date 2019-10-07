@@ -132,8 +132,14 @@ def handle_message(event):
             event.reply_token,
             TextSendMessage(text='Hai, ' + profile.display_name + '\nSaya Budi, budak digital yang siap membantu keperluan bolosmu :D\nSilahkan ketik /perintah jika kamu bingung'))
 
+    curses = ['babi', 'babi', 'bangsat', 'bgsd', 'bangsad', 'bgst', 'gblok', 'gblog', 'gblg', 'goblok', 'goblog', 'tolol', 'tlol', 'blog', 'tai']
+    for curse in curses:
+        if curse in text.split():
+            line_bot_api.reply_message(
+                event.reply_token,
+                TextSendMessage(text='lo yg '+curse))
 
-    elif 'budi' in text.split():
+    if 'budi' in text.split():
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text="apa bang"))
@@ -172,12 +178,6 @@ def handle_message(event):
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text='siapa elu ngatur2?'))
-    curses = ['babi', 'babi', 'bangsat', 'bgsd', 'bangsad', 'bgst', 'gblok', 'gblog', 'gblg', 'goblok', 'goblog', 'tolol', 'tlol', 'blog', 'tai']
-    for curse in curses:
-        if curse in text.split():
-            line_bot_api.reply_message(
-                event.reply_token,
-                TextSendMessage(text='lo yg '+curse))
     if 'daftar' in text.split() or 'cara' in text.split() and 'budi' in text.split():
         line_bot_api.reply_message(
             event.reply_token,
