@@ -19,6 +19,6 @@ jeki = {
 	'password':'***REMOVED***'
 }
 usul = {
-	'username' : '***REMOVED***'
+	'username' : '***REMOVED***',
 	'password' : 'adaapadengancinta'
 }
