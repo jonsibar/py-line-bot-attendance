@@ -119,7 +119,7 @@ def handle_message(event):
     if '/perintah' in text.split():
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text="1./absen\n2./jatah\n3./elearning\n4./ujian\n5./user"))
+            TextSendMessage(text="1./absen user\n2./jatah user\n3./elearning user\n4./ujian user\nUntuk mengecek user yang tersedia silahkan ketik /user"))
 
     elif '/user' in text.split():
         line_bot_api.reply_message(

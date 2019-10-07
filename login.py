@@ -20,5 +20,5 @@ jeki = {
 }
 usul = {
 	'username' : '***REMOVED***',
-	'password' : 'adaapadengancinta'
+	'password' : '***REMOVED***'
 }
