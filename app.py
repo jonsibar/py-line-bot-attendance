@@ -181,6 +181,11 @@ def handle_message(event):
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text='Jika ingin menikmati fiturnya,\nSilahkan chat budi dengan username dan password sso mu'))
+    elif 'siapa' in text.split():
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text='perdi')
+            )
 
 
 
