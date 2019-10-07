@@ -225,7 +225,7 @@ def bolos(login_data):
         if abs(dates[1] - dates[0]) < timedelta(days=7) or abs(dates[2] - dates[1]) < timedelta(days=7) or abs(dates[3] - dates[2]) < timedelta(days=7):
             cpw=2
             alimit=6
-         else:
+        else:
             cpw=1
             alimit=3
         a=0
