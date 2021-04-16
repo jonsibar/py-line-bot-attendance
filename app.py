@@ -73,7 +73,7 @@ def handle_join(event):
 def handle_message(event):
     text = event.message.text.lower()
     commands = ['/absen', '/jatah', '/elearning', '/ujian', '/user']
-    names = ['jono', 'devina', 'hudiya', 'pikoy', 'jeki', 'usul']
+    names = names(login)
     for command in commands:
         if command in text.split():
             for name in names:
