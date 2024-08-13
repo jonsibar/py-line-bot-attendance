@@ -23,13 +23,17 @@ from linebot.models import (
     TextComponent, SpacerComponent, IconComponent, ButtonComponent,
     SeparatorComponent, QuickReply, QuickReplyButton,
     ImageSendMessage)
+from dotenv import load_dotenv
 import scrape
 import login
 
+
 app = Flask(__name__)
 
-line_bot_api = LineBotApi('MoEx8xr4EwfVkocXBaBQmWb9DOoVlgN2XG/LrI4aOrWxW294jb26W5w3+t+0d+sFsNixnXqtHkmLbI0nF6nxWPtCTjbWOAe4ZMKJJZXocuzrd+pD2bkBtw4WplL16tpY9wcB651F3j10w/Y+1YR7JwdB04t89/1O/w1cDnyilFU=')
-handler = WebhookHandler('aaba13e6dd0d3e30113f14e73ccd9a41')
+load_dotenv()
+
+line_bot_api = LineBotApi('LINE_CHANNEL_ACCESS_TOKEN')
+handler = WebhookHandler('LINE_CHANNEL_SECRET')
 
 
 @app.route("/callback", methods=['POST'])
@@ -132,69 +136,6 @@ def handle_message(event):
             event.reply_token,
             TextSendMessage(text='Hai, ' + profile.display_name + '\nSaya Budi, budak digital yang siap membantu keperluan bolosmu :D\nSilahkan ketik /perintah jika kamu bingung'))
 
-    curses = ['babi', 'babi', 'bangsat', 'bgsd', 'bangsad', 'bgst', 'gblok', 'gblog', 'gblg', 'goblok', 'goblog', 'tolol', 'tlol', 'blog', 'tai']
-    for curse in curses:
-        if curse in text:
-            line_bot_api.reply_message(
-                event.reply_token,
-                TextSendMessage(text='lo yg '+curse))
-
-    if 'budi' in text.split():
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text="apa bang")
-            )
-
-    anjg = ['anjing','anjg','anjeng','jeng']
-    for anj in anjg:
-        if anj in text.split():
-            line_bot_api.reply_message(
-                event.reply_token,
-                TextSendMessage(text=text.replace(anj, 'pikoy'))
-                )
-
-
-    if 'koy' in text.split() or 'qoy' in text.split():
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text="kak pikoyyy"))
-
-    elif 'tasnim' in text.split():
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text='itu punya kak pikoyyy'))
-
-    elif 'hudiya' and 'fadhil' in text.split():
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text='mending fadhil kemana2 lahh'))
-    elif 'hud' in text.split():
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text='woy dipanggil hud jangan bengong aja'))
-    lols = ['wk','kw','wak']
-    for lol in lols:
-        if lol in text:
-            line_bot_api.reply_message(
-                event.reply_token,
-                TextSendMessage(text='tawa mulu bukan mikir'))
-    if 'jangan' in text.split():
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text='siapa elu ngatur2?'))
-    if 'daftar' in text.split() or 'cara' in text.split() and 'budi' in text.split():
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text='Jika ingin menikmati fiturnya,\nSilahkan chat budi dengan username dan password sso mu'))
-    elif 'siapa' in text.split():
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text='perdi')
-            )
-    elif 'perdi' in text.split() or 'per' in text.split() or 'fer' in text.split():
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text='apa2 perdi mulu'))
 
 
 
